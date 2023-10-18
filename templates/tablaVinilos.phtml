@@ -1,0 +1,45 @@
+<?php include './templates/header.phtml';
+require_once './app/controllers/auth.controller.php'; ?>
+
+
+<div class="d-flex flex-row mb-3">
+    <div class="p-2">
+        <h1 class="display-6 ">Vinilos disponibles</h1>
+    </div>
+</div>
+<div class="d-flex flex-row">
+    <div class="p-2 ">
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a href="editar" type="button" class="btn btn-outline-success">Modificar</a></li>
+            <li class="nav-item"><a href="insertar" type="button" class="btn btn-outline-success">Insertar</a></li>
+           
+        </ul>
+    </div>
+
+</div>
+
+<div class="p-3">
+    <table class="table ">
+        <thead class="table-dark">
+            <tr>
+                <th>Vinilo </th>
+                <th>Año Lanzamiento </th>
+                <th>Precio </th>
+                <th></th>
+                
+            </tr>
+        </thead>
+
+        <?php foreach ($items as $item) : ?>
+            <tbody>
+                <td><a href="detalleVinilo/<?= $item->id_vinilo ?>"> <?= $item->vinilo; ?></td>
+                <td> <?= $item->anio_lanzamiento; ?> </td>
+                <td> <?= $item->precio ?> </td>
+                <td><a href="eliminar/<?=$item->id_vinilo?>" type="button" class="btn btn-outline-success">Borrar</a></td>
+
+            <?php endforeach ?>
+
+            </tbody>
+
+    </table>
+</div>

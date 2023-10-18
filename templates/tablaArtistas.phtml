@@ -1,0 +1,25 @@
+<?php include './templates/header.phtml'?>
+
+<h1 class="display-6 ">Artistas:</h1>
+
+<div class="p-3">
+    <table class="table ">
+        <thead class="table-dark">
+            <tr>
+                <th>Artista </th>
+                <th>Nacimiento </th>
+                <th>Vinilos</th>
+            </tr>
+        </thead>
+    
+        <?php foreach ($artistas as $art) : ?>
+            <tbody>
+                <td><a href="detalleArtista/<?= $art->id_artista ?>"> <?= $art->artista; ?></td>
+                <td> <?= $art->anio_nac; ?> </td>
+                <td> <a href="artista/<?= $art->id_artista ?>"> Ver vinilos</a></td>
+                <?php endforeach ?> 
+            </tbody>
+
+    </table>
+</div>
+<?php include './templates/footer.phtml'?>
