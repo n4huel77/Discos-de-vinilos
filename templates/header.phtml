@@ -6,7 +6,6 @@
     <base href="<?php echo BASE_URL ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/estilo.vinilos.css">
     <title>Vinilos</title>
 </head>
 
@@ -24,9 +23,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="artistas">Artistas</a>
                     </li>
+                    <?php if(!AuthHelper::isLogued()): ?>
                     <li class="nav-item">
                         <a class="nav-link " href="login">Login</a>
                     </li>
+                    <?php endif ?>   
+                    <?php if(AuthHelper::isLogued()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link " href="aviso-logout">Logout</a>
+                        </li>
+                    <?php endif ?>
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true">Tudai | 2023</a>
                     </li>

@@ -36,20 +36,21 @@ class ViniloModelo{
         return $vin;
     }
 
-    public function modificarVinilo($vinilo,$anioLan,$precio,$id){
-        $query= $this->db->prepare('UPDATE vinilos SET vinilo= ?, precio= ?, anio_lanzamiento= ? WHERE vinilos.id_vinilo = ?');
-        $query->execute([$vinilo,$anioLan,$precio,$id]);
+    public function insertarVinilo($nombre, $idArt, $precio, $anio){
+     $query = $this->db->prepare('INSERT INTO vinilos (vinilo ,id_artista, precio, anio_lanzamiento) VALUES(?,?,?,?)');
+     $query->execute([$nombre, $idArt, $precio, $anio]);
+     return $this->db->lastInsertId();
+    }
+    
+    public function modificarVinilo($precio, $id){
+        $query= $this->db->prepare('UPDATE vinilos SET precio = ? WHERE vinilos.id_vinilo = ?');
+        $query->execute([$precio, $id]);
     }
 
-    public function deleteVinilo($idArt){
-        $query = $this->db->prepare('DELETE FROM vinilos WHERE id_artista=? ; DELETE FROM artistas WHERE id_artista=?');
-        $query->execute([$idArt, $idArt]);
+    public function eliminarVinilo($idVinilo){
+        $query = $this->db->prepare('DELETE FROM vinilos WHERE id_vinilo = ?');
+        $query->execute([$idVinilo]);
 
    }
 
-   public function insertarVinilo($nombre, $idArt, $precio, $anio){
-    $query = $this->db->prepare('INSERT INTO vinilos (vinilo ,id_artista, precio, anio_lanzamiento) VALUES(?,?,?,?)');
-    $query->execute([$nombre, $idArt, $precio, $anio]);
-    return $this->db->lastInsertId();
-}
 }

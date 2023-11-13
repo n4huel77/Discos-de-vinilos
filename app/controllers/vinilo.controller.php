@@ -11,8 +11,7 @@ class ViniloController{
     private $modeloArt;
 
     public function __construct() {
-        //Verifico que este logueado
-        AuthHelper::verify();
+      
         $this->modeloVin = new ViniloModelo();
         $this->vistaVin = new ViniloVista();
         $this->modeloArt = new ArtistaModelo();
@@ -45,53 +44,54 @@ class ViniloController{
         $this->vistaVin->mostrarVinXArt($vinilos);
     }
     
-    public function mostrarFormInsertar(){
-        $this->vistaVin->mostrarFormInsertar();
+    public function mostrarFormInsertarVin(){
+        $artistas = $this->modeloArt->getArtistas();
+        $this->vistaVin->mostrarFormInsertar($artistas);
     }
     public function insertarVinilo(){
-       
-        $nombre = $_POST['vinilo'];
-        $anio = $_POST['anio'];
-        $precio = $_POST['precio'];
-        $idArt = $_POST['id-artista'];
-        // validaciones
-        if (empty($nombre) || empty($precio)|| empty($anio) || empty($idArt)) {
-            $this->vistaVin->mostrarFormInsertar("Debe completar todos los campos");
-            return;
-        }
+        if(AuthHelper::verify()){
+            $nombre = $_POST['vinilo'];
+            $anio = $_POST['anio'];
+            $precio = $_POST['precio'];
+            $idArt = $_POST['id_art'];
+            
+            // validaciones
+            if (empty($nombre) || empty($precio)|| empty($anio) || empty($idArt)) {
+                $this->vistaVin->mostrarError("Debe completar todos los campos");
+                return;
+            }
 
-        $id = $this->modeloVin->insertarVinilo($nombre,$idArt, $precio, $anio);
-        if ($id) {
-            header('Location: ' . BASE_URL. 'vinilos');
-        } else {
-            var_dump("no se pudo insertar");
-            //$this->view->showError("Error al insertar la tarea");
+            $viniloInsertado = $this->modeloVin->insertarVinilo($nombre,$idArt, $precio, $anio);
+            if ($viniloInsertado) {
+                header('Location: ' . BASE_URL. 'vinilos');
+            } else {
+                $this->vistaVin->mostrarError("Error al insertar vinilo");
+            }
         }
-
-    }
-    public function mostrarFormMod(){
-
-        $this->vistaVin->mostrarFormModificar();
-    }
-    public function modificarVinilo(){
-      
-        $vinilo = $_POST['vinilo'];
-        $anioLan = $_POST['anio'];
-        $precio = $_POST['precio'];
-        $id = $_POST['id-vinilo'];
-       
-        if(!isset($vinilo) || !isset($anioLan) || !isset($precio)){
-            $this->vistaVin->mostrarFormModificar('Campos incompletos');
-            return;
-        }
-        
-        $this->modeloVin->modificarVinilo($vinilo,$anioLan,$precio,$id);
-        header('location: ' . BASE_URL . 'vinilos');
     }
 
-    public function deleteVinilo($idArt){
-        $this->modeloVin->deleteVinilo($idArt);
-        header('Location: ' . BASE_URL .'vinilos');
+    public function mostrarFormMod($idVinilo){
+        $this->vistaVin->mostrarFormModificar($idVinilo);
+    }
+
+    public function modificarVinilo($idVinilo){
+        if(AuthHelper::verify()){
+            $precio = $_POST['precio'];
+            
+            if(empty($precio) || empty($idVinilo)){
+                $this->vistaVin->mostrarError('Campos incompletos');
+                return;
+            }
+            $this->modeloVin->modificarVinilo($precio,$idVinilo);
+            header('location: ' . BASE_URL . 'vinilos');
+ 
+        }
+    }
+    public function eliminarVinilo($idVinilo){
+        if(AuthHelper::verify()){
+            $this->modeloVin->eliminarVinilo($idVinilo);
+            header('Location: ' . BASE_URL .'vinilos');
+        }
     }
 
 

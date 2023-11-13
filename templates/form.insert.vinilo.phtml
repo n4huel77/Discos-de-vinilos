@@ -1,0 +1,34 @@
+<?php include './templates/header.phtml';
+ ?>
+
+<div class="w-25 mx-auto">
+    <h1 class="display-6">Agregar vinilo</h1>
+    <form action="insertar-vinilo " method="POST">
+        <div class="mt-2 form-group">
+            <label for="" class="form-label">Vinilo:</label>
+            <input class="form-control" type="text" name="vinilo" aria-label="readonly input example" >
+        </div>
+
+        <div class="mt-2 form-group">
+        <label for="" class="form-label">Año Lanzamiento:</label>
+            <input class="form-control" type="text" name="anio"  aria-label="readonly input example" >
+        </div>
+        <div class="mt-2 form-group">
+        <label for="" class="form-label">Precio:</label>
+            <input class="form-control"type="text" name="precio"  aria-label="readonly input example" >
+        </div>
+
+        <div class="mt-2 form-group">
+        <label for="" class="form-label">Seleccione artista:</label>
+            <select class="form-select" aria-label="Default select example" name="id_art">
+                <option selected>Seleccione</option>
+                <?php foreach ($artistas as $a) :?>
+                <option value="<?= $a->id_artista?>"> <?= $a->artista; endforeach ?> </option>
+            </select>
+        </div>
+        <button type="submit"  class=" mt-2 btn btn-info">Insertar</button>
+    </form>
+    <span class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">En caso de no exitir artista puede <a href="form-insertar-artista">agregar artista.</a></span>
+</div>
+
+<?php include './templates/footer.phtml' ?>

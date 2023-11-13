@@ -1,0 +1,12 @@
+<?php
+include_once './templates/header.phtml'?>
+
+<div class="w-50 p-5">
+<h2 class="display-6">Detalles:</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Artista: <?=$detalleArt->artista?></li>
+        <li class="list-group-item">Año de nacimiento: <?=$detalleArt->anio_nac?></li>
+        <li class="list-group-item">Descripcion: <?=$detalleArt->descripcion?></li>
+    </ul>
+</div>
+<?php include './templates/footer.phtml'?>

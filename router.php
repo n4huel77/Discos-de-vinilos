@@ -17,18 +17,33 @@ $controllerArt = new artistaController();
 $controllerAuth = new AuthController();
 
 
-//  inicio          ->      $controllerVinilo->verInicio();
-//  detalleVinilo   ->      $controllerVinilo->verDetalle($id);
-//  vinilos         ->      $controllerVinilo->verVinilos();
-//  artistas        ->      $controllerArt->verArtistas();
-//  artista         ->      $controllerVinilo->verVinilosXArtista($id);
-//  detalleArtista  ->      $controllerArt->verDetalleArtista(); 
-
+//  inicio                  ->       $controllerVinilo->verInicio();
+//  detalle-vinilo          ->       $controllerVinilo->verDetalle($id);
+//  vinilos                 ->       $controllerVinilo->verVinilos();
+//  artistas                ->       $controllerArt->verArtistas();
+//  artista-vinilo          ->       $controllerVinilo->verVinilosXArtista($id);
+//  detalle-detalle         ->       $controllerArt->verDetalleArtista(); 
+//  login                   ->       $controllerAuth->mostrarLogin();
+//  auth                    ->       $controllerAuth->auth();
+//  aviso-logout            ->       $controllerAuth->mostrarAviso();
+//  logout                  ->       $controllerAuth->logout();
+//  editar-vinilo           ->       $controllerVinilo->mostrarFormMod($id);
+//  modificar-vinilo        ->       $controllerVinilo->modificarVinilo($id);
+//  eliminar-vinilo         ->       $controllerVinilo->eliminarVinilo($id);
+//  form-insertar-vinilo    ->       $controllerVinilo->mostrarFormInsertarVin();
+//  insertar-vinilo         ->       $controllerVinilo->insertarVinilo();
+//  form-insertar-artista   ->       $controllerArt->mostrarFormInsertarArt();
+//  insertar-artista        ->       $controllerArt->insertarArtista();
+//  editar-artista          ->       $controllerArt->mostrarFormModificarArt($id);
+//  modificar-artista       ->       $controllerArt->modificarArtista($id);
+//  eliminar-alerta         ->       $controllerArt->mostrarAlerta($id);
+//  eliminar-artista        ->       $controllerArt->eliminarArtista($id);
+//
 switch($params[0]){
     case 'inicio':
         $controllerVinilo->verInicio();
         break;
-    case 'detalleVinilo':
+    case 'detalle-vinilo':
         $controllerVinilo->verDetalle($params[1]);
         break;
     case 'vinilos':
@@ -37,10 +52,10 @@ switch($params[0]){
     case 'artistas':
         $controllerArt->verArtistas();
         break;
-    case 'artista':
+    case 'artista-vinilos':
         $controllerVinilo->verVinilosXArtista($params[1]);
         break;
-    case 'detalleArtista':
+    case 'artista-detalle':
         $controllerArt->verDetalleArtista($params[1]);
         break;
     case 'login':
@@ -49,20 +64,44 @@ switch($params[0]){
     case 'auth':
         $controllerAuth->auth();
         break;
-    case 'editar':
-        $controllerVinilo->mostrarFormMod();
+    case 'aviso-logout':
+        $controllerAuth->mostrarAviso();
         break;
-    case 'modificar':
-        $controllerVinilo->modificarVinilo();
+    case 'logout':
+        $controllerAuth->logout();
         break;
-    case 'eliminar':
-        $controllerVinilo->deleteVinilo($params[1]);
+    case 'editar-vinilo':
+        $controllerVinilo->mostrarFormMod($params[1]);
         break;
-    case 'insertar': 
-        $controllerVinilo->mostrarFormInsertar();
+    case 'modificar-vinilo':
+        $controllerVinilo->modificarVinilo($params[1]);
         break;
-    case 'insertarVinilo' : 
+    case 'eliminar-vinilo':
+        $controllerVinilo->eliminarVinilo($params[1]);
+        break;
+    case 'form-insertar-vinilo': 
+        $controllerVinilo->mostrarFormInsertarVin();
+        break;
+    case 'insertar-vinilo' : 
         $controllerVinilo->insertarVinilo();
+        break;
+    case 'form-insertar-artista':
+        $controllerArt->mostrarFormInsertarArt();
+        break;
+    case 'insertar-artista':
+        $controllerArt->insertarArtista();
+        break;
+    case 'editar-artista':
+        $controllerArt->mostrarFormModificarArt($params[1]);
+        break;
+    case 'modificar-artista':
+        $controllerArt->modificarArtista($params[1]);
+        break;
+    case 'eliminar-alerta':
+        $controllerArt->mostrarAlerta($params[1]);
+        break;
+    case 'eliminar-artista':
+        $controllerArt->eliminarArtista($params[1]);
         break;
     default: 
         echo "404 Page Not Found";

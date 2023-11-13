@@ -1,0 +1,13 @@
+<?php require 'templates/header.phtml' ?>
+    <div class="alert alert-warning mx-auto w-50 mt-3 d-flex justify-content-center" role="alert">
+        <div class="d-flex flex-column">
+            <h1 class="display-6">
+               Al eliminar artista, se eliminaran automaticamente todos sus vinilos. ¿Desea continuar la operacion?
+            </h1>
+            <div class="mx-auto w-30">
+                <a type="button" class="btn btn-success" href="eliminar-artista/<?= $idArt ?>">Si</a></button>
+                <a type="button" class="btn btn-danger" href="artistas">No</a></button>
+            </div>
+        </div>
+    </div>
+<?php require 'templates/footer.phtml' ?>

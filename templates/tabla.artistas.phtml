@@ -1,0 +1,42 @@
+<?php include './templates/header.phtml'?>
+<div class=" w-25 mx-auto">
+    <h1 class="display-6 text-center ">Artistas disponibles</h1>
+</div>
+
+<div class="p-3">
+    <table class="table ">
+        <thead class="table-dark">
+            <tr>
+                <th>Artista </th>
+                <th>Nacimiento </th>
+                <th>Vinilos</th>
+                <?php if(AuthHelper::isLogued()): ?>
+                <th>Acciones</th>
+                <?php endif ?>  
+            </tr>
+        </thead>
+    
+        <?php foreach ($artistas as $art) : ?>
+            <tbody>
+                <td><a href="artista-detalle/<?= $art->id_artista ?>"> <?= $art->artista; ?></td>
+                <td> <?= $art->anio_nac; ?> </td>
+                <td> <a href="artista-vinilos/<?= $art->id_artista ?>"> Ver vinilos</a></td>
+                <?php if(AuthHelper::isLogued()): ?>
+                <td><a href="eliminar-alerta/<?= $art->id_artista ?>" type="button" class="btn btn-outline-success">Borrar</a>
+                <a href="editar-artista/<?= $art->id_artista ?>" type="button" class="btn btn-outline-success">Modificar</a>
+                </td>
+                <?php endif ?>   
+                <?php endforeach ?> 
+            </tbody>
+    </table>
+    <?php if(AuthHelper::isLogued()): ?>
+        <div class="d-flex flex-row">
+            <div class="p-2 ">
+                <ul class="navbar-nav d-flex flex-row">
+                    <li class="nav-item"><a href="form-insertar-artista" type="button" class="btn btn-outline-success">Insertar</a></li>
+                </ul>
+            </div>
+        </div>
+    <?php endif ?>   
+</div>
+<?php include './templates/footer.phtml'?>

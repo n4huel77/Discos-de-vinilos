@@ -1,0 +1,13 @@
+<?php
+include_once './templates/header.phtml' ?>
+<div class="w-50 p-5">
+    <h2 class="display-6">Detalles:</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Vinilo: <?= $vinilo->vinilo ?></li>
+        <li class="list-group-item">Año de Lanzamiento: <?= $vinilo->anio_lanzamiento ?></li>
+        <li class="list-group-item">Artista: <?= $vinilo->artista ?></li>
+        <li class="list-group-item">Nacimiento: <?= $vinilo->anio_nac ?></li>
+        <li class="list-group-item">Precio: $<?= $vinilo->precio ?>ARS</li>
+    </ul>
+</div>
+<?php include './templates/footer.phtml'?>

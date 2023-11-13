@@ -15,6 +15,7 @@ class AuthController {
     }
     
     public function mostrarLogin(){
+        
         $this->vista->mostrarLogin();
     } 
 
@@ -25,14 +26,14 @@ class AuthController {
         if (empty($usuario) || empty($password)) {
             $this->vista->mostrarLogin('Faltan completar datos');
             return;
-    
         }
+
         // busco el usuario
         $user = $this->modelo->getByEmail($usuario);
         var_dump($user);
-        if ($user && ($password==$user->pass)) {
+        if ($user && password_verify($password,$user->pass)) {
             
-            //AuthHelper::login($user);
+            AuthHelper::login($user);
             
             var_dump($user);
             header('Location: ' . BASE_URL . 'vinilos' );
@@ -40,7 +41,15 @@ class AuthController {
         else {
             $this->vista->mostrarLogin('Usuario inválido');
         }
-
-
     }
+
+    public function mostrarAviso(){
+        $this->vista->logoutAviso();
+    }
+    public function logout() {
+        AuthHelper::logout();
+        header('Location: ' . BASE_URL);    
+    }
+
+
 }

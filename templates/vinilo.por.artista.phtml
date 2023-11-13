@@ -1,7 +1,8 @@
-
-<h1>Buscar por artista:</h1>
-
-<ul>
-    <?php foreach ($artista as $a) : ?>
-        <li><a href="artista/<?= $a->id_artista?>"><?= $a->artista; endforeach ?></a></li>
-</ul>
+<div class="p-3">
+    <h1 class="display-6">Buscar por artista:</h1>
+    <ul class="list-group list-group-flush">
+        <?php foreach ($artista as $a) : ?>
+            <li class="list-group-item" ><a href="artista-vinilos/<?= $a->id_artista ?>"><?= $a->artista; endforeach ?></a></li>
+        </ul>
+</div>
+<?php include './templates/footer.phtml' ?>

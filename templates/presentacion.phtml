@@ -1,5 +1,33 @@
-<h1>Bienvenido!</h1>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat eos aspernatur expedita odio quibusdam unde, reiciendis non, distinctio nobis, earum nisi? Modi adipisci quo rerum laboriosam ullam natus hic optio!</p>
-<a href="login">Registrarme</a>
+<?php require './templates/header.phtml' ?>
+<div>
+    <h1 class=" display-6 text-uppercase text-center">¡Bienvenido a nuestra pagina!</h1>
+</div>
 
-<?php include './templates/footer.phtml'?>
+<div class="d-flex flex-row justify-content-center mx-auto p-5 text-center">
+    <div class="d-flex mb-3 w-50">
+        <div>
+            <h2 class="p-2 text-center text-uppercase display-6 link-info">¿Quienes somos?</h2>
+            <div class="p-2 text-center">Nosotros somos Maia y Nahuel. Somos un grupo de dos personas, quienes decidimos crear nuestra propia pagina de vinilos y artistas.</div>
+        </div>
+    </div>
+    <div class="dd-flex mb-3 w-50">
+        <div>
+            <h2 class="mb-auto p-2 text-center text-uppercase display-6 p-2 link-info">¿Que ofrecemos?</h2>
+            <div class=" p-2 ">
+                <div class="p-2 text-wrap ">En nuestra pagina podras explorar vinilos, sus detalles, cual es su costo, año de su lanzamiento,y sus respectivos artistas, ente otros. Ademas, podras loegearte en nuestra pagina y exlporar distintos funcionamientos de nuestra pagina.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-row justify-content-center mx-auto p-5 text-center ">
+    <div class="d-flex mb-3">
+        <div>
+            <h2 class="mb-auto p-2  text-uppercase display-6 link-info">¿Como loguearse?</h2>
+            <div class="p-2 ">¡Solamente haciendo click <a href="login">aqui</a> te llevaremos directo al login!</div>
+        </div>
+    </div>
+</div>
+
+
+<?php include './templates/footer.phtml' ?>

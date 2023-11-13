@@ -1,0 +1,24 @@
+<?php include './templates/header.phtml';
+ ?>
+
+<div class="w-25 mx-auto">
+    <h1 class="display-6">Agregar artista</h1>
+    <form action="insertar-artista" method="POST">
+        <div class="mt-2 form-group">
+            <label for="" class="form-label">Artista:</label>
+            <input class="form-control" type="text" name="artista" aria-label="readonly input example" >
+        </div>
+
+        <div class="mt-2 form-group">
+        <label for="" class="form-label">Año nacimiento:</label>
+            <input class="form-control" type="text" name="anio"  aria-label="readonly input example" >
+        </div>
+        <div class="mt-2 form-group">
+            <label for="" class="form-label">Descripcion:</label>
+            <textarea class="form-control" name="descp" id="floatingTextarea2" style="height: 100px"></textarea>
+        </div>
+        <button type="submit"  class=" mt-2 btn btn-info">Insertar</button>
+    </form>
+</div>
+
+<?php include './templates/footer.phtml' ?>
